@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>auto — short-form video studio for creators</title>
+  <meta name="description" content="auto helps creators turn raw gameplay clips into vertical, captioned short videos and publish them to their own TikTok account.">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <nav class="nav">
+    <a class="brand" href="index.html">auto<span>.</span></a>
+    <a class="link" href="#features">Features</a>
+    <a class="link" href="#how">How it works</a>
+    <a class="link" href="#tiktok">TikTok</a>
+    <a class="link" href="#faq">FAQ</a>
+    <span class="spacer"></span>
+    <a class="link" href="privacy.html">Privacy</a>
+    <a class="link" href="terms.html">Terms</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Short-form video studio</p>
+    <h1>From raw gameplay clip to a finished vertical video.</h1>
+    <p class="lead">
+      auto is a desktop studio for creators. It helps you find promising moments in your
+      recordings, cut them into vertical short videos, add readable captions, and publish
+      to your own TikTok account through TikTok's official Content Posting API.
+    </p>
+    <a class="cta" href="#how">See how it works</a>
+  </section>
+
+  <section id="features" class="grid">
+    <div class="card">
+      <h3>Find the moment</h3>
+      <p>Scene and audio signals plus a transcript help pick the part of a long recording
+        that is actually worth posting.</p>
+    </div>
+    <div class="card">
+      <h3>Cut for vertical</h3>
+      <p>Automatic 9:16 reframing, 1080×1920 output, burned-in captions and normalized
+        audio, ready for short-form feeds.</p>
+    </div>
+    <div class="card">
+      <h3>Check before publish</h3>
+      <p>Duration, resolution and file integrity are validated automatically. Clips that
+        fail the checks never reach your account.</p>
+    </div>
+    <div class="card">
+      <h3>Publish on your terms</h3>
+      <p>Preview the result, edit the title and hashtags, choose privacy and interactions,
+        then confirm the upload yourself.</p>
+    </div>
+  </section>
+
+  <section id="how" class="block">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><strong>Add your footage.</strong> Point auto at a folder of recordings or import
+        a clip you own.</li>
+      <li><strong>Let the editor propose a cut.</strong> The app reads the transcript and
+        scene/audio signals and suggests a window inside the duration you configured.</li>
+      <li><strong>Review the preview.</strong> Watch the vertical result, adjust the title
+        and hashtags, and keep or redo the cut.</li>
+      <li><strong>Connect TikTok once.</strong> Sign in with TikTok through OAuth. auto only
+        asks for basic account information and permission to publish videos.</li>
+      <li><strong>Confirm the post.</strong> The publish screen shows the account, the
+        available privacy options and the interaction settings. Nothing is uploaded until
+        you press Publish.</li>
+    </ol>
+  </section>
+
+  <section id="tiktok" class="block">
+    <h2>TikTok integration</h2>
+    <p>
+      auto uses two official TikTok for Developers products: <strong>Login Kit</strong> for
+      authentication and the <strong>Content Posting API</strong> (Direct Post) for
+      publishing. No passwords are ever handled by auto.
+    </p>
+
+    <h3>Login Kit</h3>
+    <p>
+      The connection uses the OAuth 2.0 authorization-code flow with a state parameter and
+      an HTTPS redirect URI. auto requests <code>user.info.basic</code> only, to display the
+      nickname and avatar of the account that will receive the video. Tokens are stored on
+      your machine and refreshed before they expire. You can revoke access at any time in
+      TikTok under <em>Settings and privacy → Security and permissions → Manage app
+      permissions</em>.
+    </p>
+
+    <h3>Content Posting API</h3>
+    <p>
+      Before showing the publish form, auto queries the creator information endpoint and
+      displays the authorized account. The privacy dropdown only contains the options TikTok
+      returns for that account, and it starts empty — you must choose. Comment, Duet and
+      Stitch are unchecked by default and are disabled when TikTok reports them unavailable.
+      The publish screen also includes the commercial-content disclosure and the music usage
+      confirmation, and requires an explicit confirmation before any data is sent.
+    </p>
+    <p>
+      Uploads use the file-upload flow, are split into chunks, and report progress through
+      TikTok's publish-status endpoint so you can see when processing finishes. auto does not
+      add watermarks, logos or promotional text to your video.
+    </p>
+
+    <div class="note">
+      auto publishes only to the account you authorize. It does not create accounts and
+      does not post on behalf of third parties.
+    </div>
+  </section>
+
+  <section id="privacy" class="block">
+    <h2>Privacy and security</h2>
+    <p>
+      auto stores OAuth tokens and video files locally on the user's machine, protected
+      by the operating system user account. There is no analytics, advertising identifier or
+      tracking pixel, and no personal data from other TikTok users is collected. Read the
+      full <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of
+      Service</a>.
+    </p>
+  </section>
+
+  <section id="faq" class="block faq">
+    <h2>Frequently asked questions</h2>
+
+    <details>
+      <summary>Does auto post without my confirmation?</summary>
+      <p>No. The publish screen requires an explicit confirmation after you review the
+        preview, the account, the privacy level and the interaction settings.</p>
+    </details>
+
+    <details>
+      <summary>Which TikTok permissions does it request?</summary>
+      <p><code>user.info.basic</code> to show the authorized account, and
+        <code>video.publish</code> to upload a video after you confirm.</p>
+    </details>
+
+    <details>
+      <summary>Can I choose who sees each video?</summary>
+      <p>Yes. The privacy options come from TikTok for the authorized account. While an app
+        has not completed TikTok's audit, TikTok itself restricts API posts to private
+        viewing; the app shows the options TikTok returns and never overrides them.</p>
+    </details>
+
+    <details>
+      <summary>Does auto add a watermark?</summary>
+      <p>No. Captions are burned into the frame for readability, but there is no app logo,
+        handle or promotional watermark on the video.</p>
+    </details>
+
+    <details>
+      <summary>How do I disconnect my TikTok account?</summary>
+      <p>Revoke auto in TikTok's app permissions, then delete the local token file. Future
+        uploads stop immediately.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="foot">
+    <span>© 2026 auto. Independent project, not affiliated with TikTok.</span>
+    <span class="spacer"></span>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:alanborin14@gmail.com">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
+
